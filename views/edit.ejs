@@ -1,0 +1,56 @@
+<% include ./partials/header %>
+<div class="container">
+    <div class="row text-center">
+            <h1>Homepage</h1>
+            <p>Color of the game</p>
+    </div>
+    
+</div>
+
+<div class="container">
+    <form action="/list/<%todos._id%>?_method=PUT" method="POST">
+        <div class="form-group">
+            <input class="form-control" name="number" type="number" value="<%=todos.number%>">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="list" type="text" value="<%=todos.list%>">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block">Submit</button>
+       </div>
+    </form>    
+</div>
+<div class="container">
+    <div class="row">
+            <h3>The list</h3>
+            <%todos.forEach(function(todo){ %>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="well">
+                                    <h4 >
+                                         <strong> <%= todo.number%> </strong>
+                                        <em> <%= todo.list%> </em>
+                                    </h4>
+                                        <a class="btn btn-xs btn-warning" 
+                                        href="/list/<%=todos._id%>/edit"> Edit
+                                        </a>
+                                        <form class="pull-right" id="delete" action="/list/<%= todos._id %>?_method=delete" method="POST">
+                                            <button class="btn btn-xs btn-danger"> delete</button>
+                                        </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+            
+    </div>
+    
+</div>
+
+
+<% include ./partials/footer %>
+
+
+
+

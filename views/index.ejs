@@ -1,0 +1,60 @@
+<% include ./partials/header %>
+<div class="container">
+    <div class="row text-center">
+            <h1>Todo-List</h1>
+    </div>
+    
+</div>
+
+<div class="container">
+    <form action="/list" method="POST">
+        <div class="form-group">
+            <input class="form-control" name="list" type="text">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-lg btn-primary btn-block">Enter</button>
+       </div>
+    </form>    
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4">
+                <h3>The list</h3>
+                <%todos.forEach(function(todo){ %>
+                                <div class="list-group">
+                                        <li class="list-group-item " >
+                                            <em> <%= todo.list%> </em>
+                                        </li>
+                                        <form id="delete" action="/list/<%=todo._id %>?_method=DELETE" method="POST">
+                                            <button class="btn btn-xs btn-danger"> delete</button>
+                                        </form>
+                                </div>
+                <% }) %>
+        </div>
+        <div class="col-lg-4">
+
+        </div>
+        <div class="col-lg-4">
+                <h3>Done</h3>
+                        <%todos.forEach(function(todo){ %>
+                            <div class="list-group">
+                                    <li class="list-group-item " >
+                                        <em> <%= todo.list%> </em>
+                                    </li>
+                                    <form id="delete" action="/list/<%=todo._id %>?_method=DELETE" method="POST">
+                                        <button class="btn btn-xs btn-danger"> delete</button>
+                                    </form>
+
+                            </div>
+            <% }) %>
+            </div>
+    </div>
+    
+</div>
+
+
+<% include ./partials/footer %>
+
+
+
+
